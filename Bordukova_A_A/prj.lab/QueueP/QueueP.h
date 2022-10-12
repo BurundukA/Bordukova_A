@@ -15,12 +15,12 @@ public:
 	QueueP(QueueP&&) = default;
 	QueueP(const std::vector<int>& list);
 
-	//Operations with elemats of stack(declaration)
+	//Operations with elemats queue
 	void Push(const int& value);
 	void Pop();
 	const int& top() const;
 
-	//Getting data about stack
+	//Getting data about queue
 	inline bool isEmpty() const {
 		return size == 0;
 	}

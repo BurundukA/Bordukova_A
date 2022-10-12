@@ -5,7 +5,7 @@
 #include <algorithm>
 
 
-TEST_CASE("Testing QueueR") {
+TEST_CASE("Testing QueueP") {
 
     QueueP a = QueueP();
     CHECK(a.isEmpty());
