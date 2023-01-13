@@ -9,19 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS
-    Core
-    Gui
-    Widgets
-    Network
-    REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
-    Core
-    Gui
-    Widgets
-    Network
-    REQUIRED)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Sql)
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
@@ -33,32 +22,32 @@ if(DOXYGEN_FOUND)
 endif()
 
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-        autorization.cpp
-        autorization.h
-        autorization.ui
-        users_choose.cpp
-        users_choose.h
-        users_choose.ui
-        connect_data_base.h
-        connect_data_base.cpp
-        dinamic_items.h
-        dinamic_items.cpp
-        dynamic_item.h
-        dynamic_item.cpp
-        dynamic_layout.h
-        dynamic_layout.cpp
-        trainers_choose.h
-        trainers_choose.cpp
-        trainers_choose.ui
-        dynamic_combobox.h
-        dynamic_combobox.cpp
-        administrator_choose.h
-        administrator_choose.cpp
-        administrator_choose.ui
+    main.cpp
+            mainwindow.cpp
+            mainwindow.h
+            mainwindow.ui
+            autorization.cpp
+            autorization.h
+            autorization.ui
+            users_choose.cpp
+            users_choose.h
+            users_choose.ui
+            connect_data_base.h
+            connect_data_base.cpp
+            dinamic_items.h
+            dinamic_items.cpp
+            dynamic_item.h
+            dynamic_item.cpp
+            dynamic_layout.h
+            dynamic_layout.cpp
+            trainers_choose.h
+            trainers_choose.cpp
+            trainers_choose.ui
+            dynamic_combobox.h
+            dynamic_combobox.cpp
+            administrator_choose.h
+            administrator_choose.cpp
+            administrator_choose.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
