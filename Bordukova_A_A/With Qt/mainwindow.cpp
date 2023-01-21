@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     forusers = new Autorization();
     connect(this, &MainWindow::signal, forusers, &Autorization::slot);
     connect(forusers,&Autorization::return_to_main_window, this, &MainWindow::show);
+    this->setWindowTitle("Выбор пользователя");
 }
 
 MainWindow::~MainWindow()

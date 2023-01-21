@@ -6,6 +6,7 @@ trainers_choose::trainers_choose(QWidget *parent) :
     ui(new Ui::trainers_choose)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Выбор тренера");
 }
 
 trainers_choose::~trainers_choose()

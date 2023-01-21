@@ -12,6 +12,7 @@ users_choose::users_choose(QWidget *parent) :
     //connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(on_pushButton_clicked()));
     //connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(on_pushButton_2_clicked()));
     //connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(on_pushButton_3_clicked()));
+    this->setWindowTitle("Выбор посетителя");
 }
 
 users_choose::~users_choose()

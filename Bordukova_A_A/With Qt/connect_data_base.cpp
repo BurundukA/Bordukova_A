@@ -14,7 +14,7 @@ void Connect_Data_Base::connectToDataBase()
     /* Перед подключением к базе данных производим проверку на её существование.
      * В зависимости от результата производим открытие базы данных или её восстановление
      * */
-    path = QDir::currentPath() + "/moscomsport.db";
+    path = QDir::currentPath() + "/src/moscomsport.db";
     qDebug()<<path;
     if(!QFile(path).exists()){
         qDebug()<<"Базы данныйх не существует";

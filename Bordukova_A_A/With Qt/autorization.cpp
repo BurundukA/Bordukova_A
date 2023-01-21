@@ -18,6 +18,7 @@ Autorization::Autorization(QWidget *parent) :
     connect(this, &Autorization::pass_id, tr_choose, &trainers_choose::get_id);
     connect(ad_choose,&administrator_choose::return_to_autorization, this, &Autorization::show);
     connect(this, &Autorization::pass_id, ad_choose, &administrator_choose::get_id);
+    this->setWindowTitle("Авторизация");
 }
 
 

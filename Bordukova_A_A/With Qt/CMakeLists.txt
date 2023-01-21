@@ -2,11 +2,19 @@ cmake_minimum_required(VERSION 3.5)
 
 project(vgb VERSION 0.1 LANGUAGES CXX)
 
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/install" CACHE PATH "..." FORCE)
+endif()
+
+
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
@@ -14,11 +22,16 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Sql)
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
-    add_custom_target(docs ${DOXYGEN_EXECUTABLE} docs.doxyfile
-       COMMENT "Generating API documentation with Doxygen"
-       VERBATIM
-       SOURCES ${PRJ_DOXY}
-       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+	set(doxyfile_in ${CMAKE_SOURCE_DIR})
+
+	configure_file(Doxyfile ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+
+	add_custom_target(docs 
+	${DOXYGEN_EXECUTABLE}
+	${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+	COMMENT "Generating API documentation with Doxygen"
+	VERBATIM
+	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 endif()
 
 set(PROJECT_SOURCES
@@ -48,7 +61,9 @@ set(PROJECT_SOURCES
             administrator_choose.h
             administrator_choose.cpp
             administrator_choose.ui
+			moscomsport.db
 )
+
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(vgb
@@ -84,10 +99,24 @@ set_target_properties(vgb PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-install(TARGETS vgb
-    BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(vgb)
 endif()
+
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
+install(TARGETS vgb DESTINATION .)
+macro(copy_directory src dst)
+    execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${src} ${dst}
+        RESULT_VARIABLE ret
+        OUTPUT_VARIABLE out
+        ERROR_VARIABLE  err
+    )
+    if(ret)
+        message(FATAL_ERROR "ERROR ---> could not be copied: ${err}")
+    endif()
+endmacro()

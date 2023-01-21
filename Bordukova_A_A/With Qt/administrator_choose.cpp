@@ -6,6 +6,7 @@ administrator_choose::administrator_choose(QWidget *parent) :
     ui(new Ui::administrator_choose)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Функционал администратора");
 }
 
 administrator_choose::~administrator_choose()
