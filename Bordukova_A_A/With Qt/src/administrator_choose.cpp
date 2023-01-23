@@ -392,7 +392,7 @@ void administrator_choose::come_back_to_choosing_person()
         answer->hide();
         vvod->setText("Введите фамилию посетителя");
     }
-    if(answer->text() == "Данные успешно обновлены1!" or answer->text()=="1")
+    if(answer->text() == "Данные успешно обновлены1!" || answer->text()=="1")
     {
         first_name->hide();
         delete first_name;
@@ -405,7 +405,7 @@ void administrator_choose::come_back_to_choosing_person()
         delete change;
         vvod->setText("Введите фамилию посетителя");
     }
-    if(answer->text() == "Данные успешно обновлены2!" or answer->text()=="2")
+    if(answer->text() == "Данные успешно обновлены2!" || answer->text()=="2")
     {
     first_name->hide();
     delete first_name;
