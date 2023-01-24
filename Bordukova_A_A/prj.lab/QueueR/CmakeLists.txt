@@ -1,3 +1,0 @@
-add_library(QueueR QueueR.h QueueR.cpp)
-add_executable(QueueR_test QueueR_test.cpp)
-target_link_libraries(QueueR_test QueueR)
